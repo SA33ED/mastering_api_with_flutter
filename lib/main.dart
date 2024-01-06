@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mastering_api_with_flutter/cubit/user_cubit.dart';
 import 'package:mastering_api_with_flutter/screens/sign_in_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    BlocProvider(
+      create: (context) => UserCubit(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,9 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignInScreen(
-        
-      ),
+      home: SignInScreen(),
     );
   }
 }
